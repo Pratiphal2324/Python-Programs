@@ -1,0 +1,7 @@
+print("Hello World!")
+print(123)
+print(type("hello World"))
+num = input("Enter a number: ")
+print(num, type(num))
+n = int(num)
+print(n, type(n))
