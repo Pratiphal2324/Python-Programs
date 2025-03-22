@@ -44,7 +44,7 @@ while(1):
             print("\nInvalid input! Please try again!\n")
             continue
         if guess in guessed:
-            print("\nAlready guessed "+guess+" Try again!\n")
+            print("\nAlready guessed "+guess+"! Try again!\n")
             continue
         if guess=="0":
             break
