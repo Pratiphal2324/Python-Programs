@@ -16,6 +16,7 @@ elif(choice=='2'):
     inp = random.choice(word_list).upper()
 else:
     print("Invalid input! Try again!")
+    quit()
 # print(inp)
 num = len(inp)
 print("\nThe Game Starts!\nEnter '0' to exit\nLives left = 6\n")
@@ -32,45 +33,44 @@ for x in range(0,num):
 for i in arr:
     print(i,end=" ")
 # print(arr)
-while(1):
-    if(inp):
-        guess = input("\nGuess a letter: ").upper()
-        if(guess):
-            if(guess==inp):
-                print("\nCongrats!! You Won!!!\n")
-                print("Score: "+str(c))
+while(1):   
+    guess = input("\nGuess a letter: ").upper()
+    if(guess):
+        if(guess==inp):
+            print("\nCongrats!! You Won!!!\n")
+            print("Score: "+str(c))
+            break
+        if len(guess)>1:
+            print("\nInvalid input! Please try again!\n")
+            continue
+        if guess in guessed:
+            print("\nAlready guessed "+guess+" Try again!\n")
+            continue
+        if guess=="0":
+            break
+        else:
+            guessed.add(guess)
+        if guess in inp:
+            print("\nCorrect Guess!")
+            print("\nLives left = "+str(c))
+            for x in range(0,num):
+                if(inp[x]==guess):
+                    arr[x] = guess
+            for i in arr:
+                print(i,end=" ")
+            print("\nGuessed Letters : "+','.join(guessed)+"\n")
+        else:
+            c=c-1
+            print("\nWrong guess!")
+            if c==0:
+                print("\nGame Over!")
+                print("The word was "+inp)
                 break
-            if len(guess)>1:
-                print("\nInvalid input! Please try again!\n")
-                continue
-            if guess in guessed:
-                print("\nAlready guessed "+guess+" Try again!\n")
-                continue
-            if guess=="0":
-                break
-            else:
-                guessed.add(guess)
-            if guess in inp:
-                print("\nCorrect Guess!")
-                print("\nLives left = "+str(c))
-                for x in range(0,num):
-                    if(inp[x]==guess):
-                        arr[x] = guess
-                for i in arr:
-                    print(i,end=" ")
-                print("\nGuessed Letters : "+','.join(guessed)+"\n")
-            else:
-                c=c-1
-                print("\nWrong guess!")
-                if c==0:
-                    print("\nGame Over!")
-                    print("The word was "+inp)
-                    break
-                print("\nLives Left = "+str(c))
-                for i in arr:
-                    print(i,end=" ")
-                print("\nGuessed Letters : "+','.join(guessed)+"\n")
-            if(''.join(arr)==inp):
-                print("\nCongrats!! You Won!!!\n")
-                print("Score: "+str(c))
-                break
+            print("\nLives Left = "+str(c))
+            for i in arr:
+                print(i,end=" ")
+            print("\nGuessed Letters : "+','.join(guessed)+"\n")
+        if(''.join(arr)==inp):
+            print("\nCongrats!! You Won!!!\n")
+            print("Score: "+str(c))
+            break
