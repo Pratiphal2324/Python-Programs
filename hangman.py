@@ -6,7 +6,7 @@ import random
 import nltk
 from nltk.corpus import words
 choice = input("Enter '1' to Play with a Friend and '2' to play with the computer: ")
-inp=''
+
 if(choice=='1'):
     inp = input("Enter a word: ").upper()
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
