@@ -1,28 +1,24 @@
-import random as R
-
-
+import random
 class Rand:
-    sLetters = [chr(x) for x in range(97, 123)]
-    cLetters = [chr(x) for x in range(65, 91)]
-    symbols = ["!", "#", "@", "$", "&", "*", "_"]
-    numbers = [x for x in range(0, 10)]
-    pas = [sLetters, cLetters, symbols, numbers]
-
+    sLetters = set(chr(x) for x in range(97, 123))
+    cLetters = set(chr(x) for x in range(65, 91))
+    symbols = set(["!", "#", "@", "$", "&", "*", "_"])
+    numbers = set(x for x in range(0, 10))
+    pas = set().union(sLetters,cLetters,symbols,numbers)
+    stringify=list(str(x) for x in pas)
 
 a = Rand()
-i = a.pas
+char = a.stringify
 while True:
-    c = 1
-    p = ""
-    while c <= 16:
-        p = p + str(R.choice(R.choice(i)))
-        c = c + 1
-    print("\n" + p)
-    repeat = input("\nDo you want another one?(Y/N) : ")
-    if str.lower(repeat) == "y":
-        continue
-    elif str.lower(repeat) == "n":
-        break
-    else:
-        print("Invalid Input! Please try again!")
-        break
+    password: str="".join(random.choices(population=char,k=16))
+    print(password)
+    repeat = input("\nDo you want another one?(Y/N) : ").lower()
+    # changed if else to match case for error debugging
+    match repeat:
+        case "y":
+            continue
+        case "n":
+            break
+        case _:
+            print("Invalid Input! Please try again!")
+            break
